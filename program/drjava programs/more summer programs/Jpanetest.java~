@@ -1,0 +1,26 @@
+import javax.swing.*;
+import java.awt.event.*;
+public class Jpanetest {
+  
+  
+  public static void main(String[] args) { 
+    
+  }
+  
+//private JButton butt;
+//  private JButton butt2;
+  private JLabel health1, health2;
+  public JPanetest(){
+   this.setSize(600, 300);
+   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+   this.setTitle("click contest");
+   
+   JPanel panel = new JPanel();
+
+   panel.add(health1);
+   panel.add(health2);
+   this.add(panel);
+   
+   this.setVisible(true);
+  
+}

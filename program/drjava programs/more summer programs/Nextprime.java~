@@ -1,0 +1,8 @@
+
+public class nextprime
+{
+  public static void main (String[] args)
+  {
+    
+  }
+}

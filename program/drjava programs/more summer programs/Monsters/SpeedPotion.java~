@@ -1,0 +1,14 @@
+/**
+ * Auto Generated Java Class.
+ */
+public class SpeedPotion extends Potion {
+  
+  public SpeedPotion() { 
+    super();
+    this.agility=10;
+    this.name="Speed Potion";
+    this.stock=10;
+  }
+  /* ADD YOUR CODE HERE */
+  
+}

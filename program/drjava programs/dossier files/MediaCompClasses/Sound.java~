@@ -1,0 +1,147 @@
+
+/**
+ * Class that represents a sound.  This class is used by the students
+ * to extend the capabilities of SimpleSound. 
+ * 
+ * Copyright Georgia Institute of Technology 2004
+ * @author Barbara Ericson ericson@cc.gatech.edu
+ */
+public class Sound extends SimpleSound
+{
+  
+  /////////////// consructors ////////////////////////////////////
+  
+  /**
+   * Constructor that takes a file name
+   * @param fileName the name of the file to read the sound from
+   */
+  public Sound(String fileName)
+  {
+    // let the parent class handle setting the file name
+    super(fileName);
+  }
+  
+  /**
+   * Constructor that takes the number of samples in
+   * the sound
+   * @param numSamples the number of samples desired
+   */
+  public Sound (int numSamples)
+  {
+    // let the parent class handle this
+    super(numSamples);
+  }
+  
+  /**
+   * Constructor that takes a sound to copy
+   */
+  public Sound (Sound copySound)
+  {
+    // let the parent class handle this
+    super(copySound);
+  }
+  
+  ////////////////// methods ////////////////////////////////////
+  
+  /**
+   * Method to return the string representation of this sound
+   * @return a string with information about this sound
+   */
+  public String toString()
+  {
+    String output = "Sound";
+    String fileName = getFileName();
+    
+    // if there is a file name then add that to the output
+    if (fileName != null)
+      output = output + " file: " + fileName;
+    
+    // add the length in frames
+    output = output + " number of samples: " + getLengthInFrames();
+    
+    return output;
+  }
+  
+  public void increaseVolume()
+  {
+    SoundSample[] sampleArray = this.getSamples(); 
+    int value = 0;                           // value at sample
+
+    // loop through SoundSample objects
+    for (SoundSample sample : sampleArray)
+    {
+      value = sample.getValue();     // get the value
+      sample.setValue(value * 2);    // set the value
+     }
+  }
+  
+  public void forceToExtremes()
+  {
+    SoundSample[] sampleArray = this.getSamples(); 
+    int value = 0;                           // value at sample
+
+    // loop through SoundSample objects
+    for (SoundSample sample : sampleArray)
+    {
+      value = sample.getValue();     // get the value
+      if (value >= 0)
+      {
+        sample.setValue(32767);
+      }
+      else
+      {
+        sample.setValue(-32768);
+      }
+     }
+  }
+  
+  public void reverse()
+  {
+    Sound orig = new Sound(this.getFileName()); 
+    int length = this.getLength();
+    
+    // loop through the samples
+    for (int targetIndex = 0, sourceIndex = length - 1; 
+         targetIndex < length && sourceIndex >= 0; 
+         targetIndex++, sourceIndex--)
+      this.setSampleValueAt(targetIndex, 
+                            orig.getSampleValueAt(sourceIndex));
+  }
+  
+  public void mirror()
+  {
+    int length = this.getLength();
+    int midpoint = length/2;
+    
+    // loop through the samples
+    for (int i = 0; i < midpoint; i++)
+    {
+      this.setSampleValueAt(length - 1 - i,
+                            this.getSampleValueAt(i));
+    }
+  }
+
+  public void decreaseVolume()
+  {
+    SoundSample[] sampleArray = this.getSamples(); 
+    int value = 0;                           // value at sample
+
+    // loop through SoundSample objects
+    for (SoundSample sample : sampleArray)
+    {
+      value = sample.getValue();     // get the value
+      sample.setValue(value / 2);    // set the value
+     }
+  }
+  
+  public static void main(String[] args)
+  {
+    Sound s1 = 
+      new Sound(FileChooser.getMediaPath("croak.wav"));
+    s1.explore();
+    s1.mirror();
+    s1.explore();
+  }
+
+             
+} // end of class Sound, put all new methods before this

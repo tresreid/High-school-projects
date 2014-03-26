@@ -1,0 +1,20 @@
+import java.awt.*;
+ import java.applet.*;
+ public class App extends Applet
+ {
+     int a,c,b,d;
+     public App()
+     {
+         a=12;
+         b=12;
+         c=123;
+         d=234;
+     }
+      
+     public void paint (Graphics g)
+     {
+         System.out.println ("b="+b);
+         g.drawLine(a, b, c, d);
+     }
+      
+ }

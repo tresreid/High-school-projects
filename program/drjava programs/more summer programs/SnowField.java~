@@ -1,0 +1,11 @@
+/**
+ * Auto Generated Java Class.
+ */
+public class SnowField extends Field {
+  
+  public SnowField() { 
+    /* YOUR CONSTRUCTOR CODE HERE*/
+  }
+  /* ADD YOUR CODE HERE */
+  
+}

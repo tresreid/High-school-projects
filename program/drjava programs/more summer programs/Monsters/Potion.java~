@@ -1,0 +1,96 @@
+
+public class Potion{
+  int attack=0;
+  int defense=0;
+  int magicAttack=0;
+  int magicDefense=0;
+  int range=0;
+  int health=0;
+  int mana=0;
+  int specialGauge=0;
+  int movementSpeed=0;
+  int agility=0;
+  String name="";
+  int level=0; 
+  double height;
+  int stock;
+//    GETTERS
+  public int getAttack(){
+    return attack;
+  }
+  public int getDefense(){
+    return defense;
+  }
+  public int getMagicAttack(){
+    return magicAttack;
+  }
+  public int getMagicDefense(){
+    return magicDefense;
+  }
+  public int getRange(){
+    return range;
+  }
+  public int getHealth(){
+    return health;
+  }
+  public int getMana(){
+    return mana;
+  }
+  public int getSpecialGauge(){
+    return specialGauge;
+  }
+  public int getMovementSpeed(){
+    return movementSpeed;
+  }
+  public int getAgility(){
+    return agility;
+  }
+  public String getName(){
+    return name;
+  }
+  public int getLevel(){
+    return level;
+  }
+  public double height(){
+    return height; 
+  }
+  public int getStock(){
+    return stock;
+  }
+  
+  public void setStock(int stock){
+    this.stock=stock;
+  }
+//USERS
+  public void useHeal(CreatureTemplate attackingCreature){
+    if(getStock()>0){
+      attackingCreature.setHealth( attackingCreature.getHealth() + getHealth());
+      stock--;
+      System.out.println("you have used a " + getName() +". You have gained " +getHealth() + " health!");
+    }
+    else{System.out.println("Out of potions! :o");}
+    }
+    public void useManaHeal(CreatureTemplate attackingCreature){
+      if(getStock()>0){
+        attackingCreature.setMana( attackingCreature.getMana() + getMana());
+        stock--;
+        System.out.println("you have used a " + getName() +". You have gained " +getMana() + " mana!");
+      }
+      else{System.out.println("Out of potions! :o");}
+      }
+      
+      public void useSpeedBuff(CreatureTemplate attackingCreature){
+        if(getStock()>0){
+          attackingCreature.setAgility( attackingCreature.getAgility() + getAgility());
+          stock--;
+          System.out.println("you have used a " + getName() +". You have gained " +getAgility() + " speed!");
+        }
+        else{System.out.println("Out of potions! :o");}
+        }
+      }
+      /*
+       * USED BY
+       * HealthPotion
+       * ManaPotion
+       * SpeedPotion
+       */

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\Actual code.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\Itry.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\Ohgosh.ewp</path>
+  </project>
+  <batchBuild/>
+</workspace>
+
+

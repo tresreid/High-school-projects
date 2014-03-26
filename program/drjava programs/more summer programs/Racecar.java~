@@ -1,0 +1,22 @@
+
+public class Racecar {
+  public int speed;
+  public int traction;
+  public String color= "";
+  public String name="";
+  public int turning;
+  public Racecar(int startSpeed, int startTraction, int startTurning, String startColor) { 
+    speed = startSpeed;
+    traction=startTraction;
+    turning= startTurning;
+    color=startColor;
+   
+  }
+  
+  public static void main(String[] args) { 
+    
+  }
+  
+  /* ADD YOUR CODE HERE */
+  
+}

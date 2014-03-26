@@ -1,0 +1,35 @@
+module Main where 
+import Data.Char 
+import System.Environment 
+import System.Exit 
+import System.IO
+
+rot :: String -> String -> String 
+rot pass = map rot_char where 
+    rot_char c 
+        | isLower c = rot_case 'a' c 
+        | isUpper c = rot_case 'A' c 
+        | otherwise = c   
+    rot_case cas c = chr (ord cas + (ord c - ord cas + ord (head pass)-97) `rem` 26)
+
+usage :: IO () 
+usage = do 
+    progname <- getProgName 
+    hPutStrLn stderr $ "usage: " ++ progname ++ " n" 
+    exitWith $ ExitFailure 255 
+
+rot_stdin :: String -> IO () 
+rot_stdin pass = do 
+    input <- getContents 
+    putStr $ rot pass input 
+
+main :: IO () 
+main = do 
+    pass <- getLine
+    args <- getArgs 
+    case args of 
+        [] -> rot_stdin pass 
+        [x] 
+            | x == "^-?[0-9]+$" -> rot_stdin (read x)
+            | otherwise -> usage
+        _ -> usage

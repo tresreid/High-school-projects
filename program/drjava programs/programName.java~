@@ -1,0 +1,14 @@
+public class programName {
+  public static void main(String[] arg){
+    int team1=8,team2=2;
+String outcome="";
+if (team1 == team2)
+outcome="tie game";
+if(team1>team2)
+outcome="vitory for 1";
+else
+  outcome="vitory for 2";
+System.out.println(outcome); 
+    
+  }
+}

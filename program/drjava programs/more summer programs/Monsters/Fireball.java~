@@ -1,0 +1,11 @@
+/**
+ * Auto Generated Java Class.
+ */
+public class Fireball extends MagicSpells {
+  
+  public Fireball() { 
+    /* YOUR CONSTRUCTOR CODE HERE*/
+  }
+  /* ADD YOUR CODE HERE */
+  
+}

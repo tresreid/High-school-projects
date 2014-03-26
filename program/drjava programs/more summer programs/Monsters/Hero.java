@@ -1,0 +1,27 @@
+/**
+ * Auto Generated Java Class.
+ */
+public class Hero extends CreatureTemplate {
+  
+  public Hero() { 
+   super();
+   this.attack=10;
+   this.defense=10;
+   this.magicAttack=10;
+   this.magicDefense=5;
+   this.range=10;
+   this.health=100;
+   this.mana=100;
+   this.specialGauge=0;
+   this.movementSpeed=10;
+   this.agility=10;
+   this.name="Hero";
+   this.level=0;
+   this.height=0;
+   this.totalHealth=100;
+   this.totalMana=100;
+   this.exp=74;
+  }
+  /* ADD YOUR CODE HERE */
+
+}

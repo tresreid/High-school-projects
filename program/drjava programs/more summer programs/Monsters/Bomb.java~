@@ -1,0 +1,13 @@
+/**
+ * Auto Generated Java Class.
+ */
+public class Bomb extends ThrowableItem {
+  
+  public Bomb() { 
+    super();
+    this.attack=30;
+    this.ammo=5;
+  }
+  /* ADD YOUR CODE HERE */
+  
+}

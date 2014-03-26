@@ -1,0 +1,26 @@
+module Main where
+
+import Calc
+
+square :: CalcState ()
+square = do
+    kDup
+    kMul
+
+hypotenuse :: CalcState ()
+hypotenuse = do
+    square
+    kSwap
+    square
+    kAdd
+    kSqrt
+
+test :: Double
+test = perform $ do
+    kEnter 1
+    kEnter 2
+    kAdd
+    kEnter 3
+    kMul    
+
+    

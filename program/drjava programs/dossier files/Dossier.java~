@@ -1,0 +1,41 @@
+import javax.swing.*;
+public class Dossier
+{
+  public static void main(String[] arg)
+  {
+    int lol;
+    do{
+int mc = JOptionPane.QUESTION_MESSAGE;
+String[] opts = {"Picture files", "Audio Files", "Document files"};
+int ch = JOptionPane.showOptionDialog (null, "Choose", "Title", JOptionPane.YES_NO_CANCEL_OPTION, mc, null, opts, opts[2]);
+if(ch==JOptionPane.YES_OPTION){
+  Manipic picture = new Manipic();
+ String[] opts1= {"Scramble", "UnScramble"};
+    int n = JOptionPane.showOptionDialog(null,"Would you like to Scamble or Unscramble a file? ",
+    "Scramble choice", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opts1,opts1[1]);
+    if(n==JOptionPane.YES_OPTION){ picture.scramble();}
+    else if(n==JOptionPane.NO_OPTION){ picture.unscramble();}
+    else{ System.out.println("Woops, error");}
+  }
+if(ch==JOptionPane.NO_OPTION){   
+  ManiAudi audio = new ManiAudi();
+   String[] opts1= {"Scramble", "UnScramble"};
+    int n = JOptionPane.showOptionDialog(null,"Would you like to Scamble or Unscramble a file? ",
+    "Scramble choice", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opts1,opts1[1]);
+    if(n==JOptionPane.YES_OPTION){ audio.scramble();}
+    else if(n==JOptionPane.NO_OPTION){ audio.unscramble();}
+    else{ System.out.println("Woops, error");}}
+if(ch==JOptionPane.CANCEL_OPTION){
+   ManiDoc reader = new ManiDoc();
+   String[] opts1= {"Scramble", "UnScramble"};
+    int n = JOptionPane.showOptionDialog(null,"Would you like to Scamble or Unscramble a file? ",
+    "Scramble choice", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,opts1,opts1[1]);
+    if(n==JOptionPane.YES_OPTION){ reader.scramble();}
+    else if(n==JOptionPane.NO_OPTION){ reader.unscramble();}
+    else{ System.out.println("Woops, error");}
+}
+String[] stay= {"yes","no"};
+lol = JOptionPane.showOptionDialog (null,"Would you like to continue?", "Title", JOptionPane.YES_NO_OPTION,mc, null,stay, stay[1]);
+    }while(lol==JOptionPane.YES_OPTION);
+}
+}

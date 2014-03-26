@@ -1,0 +1,206 @@
+import java.util.ArrayList;
+import javax.swing.*;
+import java.math.*;
+public class Test {
+  
+  
+  public static void main(String[] args) { 
+    
+  int landDistance=100;
+  int turn=0;
+        EquipmentTemplate equipment= new EquipmentTemplate();
+        ArrayList<EquipmentTemplate> equiped = new ArrayList<EquipmentTemplate>();
+        equiped.add(0,equipment);equiped.add(1,equipment);equiped.add(2,equipment);
+ArrayList<CreatureTemplate> creatures = new ArrayList<CreatureTemplate>();//not sure if needed...
+CreatureTemplate creature1= new Hero();
+CreatureTemplate creature2= new Blob();
+CreatureTemplate attackingCreature;
+CreatureTemplate defendingCreature;
+
+
+
+while(creature1.getHealth()>0 && creature2.getHealth()>0){
+  turn++;
+  int distanceTemp=0;
+  double distance = Math.hypot(landDistance, (creature1.getHeight()-creature2.getHeight()));
+  boolean yourturn=true;
+  if(distance<=creature1.getRange()){
+    if(yourturn==true){attackingCreature= creature1; defendingCreature=creature2;}
+    else{attackingCreature= creature2; defendingCreature= creature1;}
+    attackScreen(attackingCreature, defendingCreature,equipment, equiped);
+  }
+  else{
+       if(landDistance<=0){landDistance=0;}
+       else{distanceTemp-= creature1.getMovementSpeed(); }
+  }
+  
+  if(distance<=creature2.getRange()){
+    yourturn=false;
+    if(yourturn==true){attackingCreature= creature1; defendingCreature=creature2;}
+    else{attackingCreature= creature2; defendingCreature= creature1;}
+    defenseScreen(attackingCreature, defendingCreature);
+  }
+  else{
+       if(landDistance<=0){landDistance=0;}
+       else{distanceTemp-=creature2.getMovementSpeed();}
+       landDistance+=distanceTemp;
+  }
+  System.out.println("Health 1: "+creature1.getHealth());
+  System.out.println("Mana 1: "+creature1.getMana());
+  System.out.println("Health 2: "+creature2.getHealth());
+  System.out.println("Mana 2 "+creature2.getMana());
+      System.out.println("land distance: "+landDistance);
+            System.out.println("total distance: "+distance);
+}
+
+
+if (creature1.getHealth()<=0 && creature2.getHealth()<=0){System.out.println("Both "+ creature1.getName() +" and "+ creature2.getName()+ " have died");}
+else if (creature1.getHealth()<=0){System.out.println(creature1.getName() + " has died");}
+else if (creature2.getHealth()<=0){System.out.println(creature2.getName() + " has died");}
+else{System.out.println("idk what happened");}
+  }
+  
+  /*
+   * METHODS
+   * 
+   */
+  //ATTACK SCREEN
+  public static void attackScreen(CreatureTemplate attackingCreature, CreatureTemplate defendingCreature,EquipmentTemplate equipment, ArrayList<EquipmentTemplate> equiped){
+    
+    String[] opts = {"Attack", "Shoot", "Magic Attack", "Item", "Flee","Equip"};
+    int actionA = JOptionPane.showOptionDialog (null, "Choose an Action", "YOUR TURN!!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opts, opts[2]);
+
+if (actionA==0){defendingCreature.setHealth(defendingCreature.getHealth()- attackingCreature.attack(attackingCreature, defendingCreature));}
+else if (actionA==1){defendingCreature.setHealth(defendingCreature.getHealth()- attackingCreature.shoot(attackingCreature, defendingCreature, equipment));}
+else if (actionA==2){
+  MagicSpells spell;
+      String[] spellList = {"Fireball", "Ice Breath"};
+    int sp = JOptionPane.showOptionDialog (null, "Choose a Spell!", "YOUR TURN!!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, spellList, spellList[0]);
+    if(sp==0){
+      spell = new Fireball();
+        defendingCreature.setHealth(defendingCreature.getHealth()-spell.cast(attackingCreature, defendingCreature, spell));
+    }
+    else if(sp==1){
+      spell = new IceBreath();
+        defendingCreature.setHealth(defendingCreature.getHealth()-spell.cast(attackingCreature, defendingCreature, spell));
+    }
+}
+else if (actionA==3){
+  String[] itemORthowableList = {"Potion", "Throwable Item"};
+  int itemORthowable = JOptionPane.showOptionDialog (null, "Choose an Item", "Inventory!!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, itemORthowableList, itemORthowableList[0]);
+  if(itemORthowable==0){
+  String[] itemList = {"Health Potion", "Mana Potion", "Speed Potion"};
+  int items = JOptionPane.showOptionDialog (null, "Choose an Item", "Inventory!!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, itemList, itemList[0]);
+  Potion potion;
+  if(items==0){
+    potion= new HealthPotion();
+    potion.useHeal(attackingCreature);
+    System.out.println("you have used a " + potion.getName() +". You have gained " +potion.getHealth() + " health!");}
+  else if (items==1){
+    potion = new ManaPotion();
+    potion.useManaHeal(attackingCreature);
+    System.out.println("you have used a " + potion.getName() +". You have gained " +potion.getMana() + " mana!");}
+  else if (items==2){
+    potion = new SpeedPotion();
+    potion.useSpeedBuff(attackingCreature);
+    System.out.println("you have used a " + potion.getName() +". You have gained " +potion.getAgility() + " speed!");}
+}
+  else if(itemORthowable==1){
+    String[] itemList = {"Bomb", "Shuriken"};
+  int items = JOptionPane.showOptionDialog (null, "Choose an Item to throw!", "Inventory!!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, itemList, itemList[0]);
+  ThrowableItem throwableItem;
+  if(items==0){
+    throwableItem = new Bomb();
+    throwableItem.toss(defendingCreature);
+  }
+  else if(items==1){
+    throwableItem= new Shuriken();
+    throwableItem.toss(defendingCreature);
+  }
+  
+  }
+}
+else if (actionA==4){System.out.println("You have attempted to flee. There is no escape! :o");}
+
+else if(actionA==5){
+  String[] equip = {"Equip", "Unequip"};
+  int eq = JOptionPane.showOptionDialog (null, "Would you like to equip or unequip an item?", "Inventory!!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, equip, equip[0]);
+    if(eq==0){    
+      String[] equipmentList = {"Sword", "Bow", "Shield", "Armor"};
+      int items = JOptionPane.showOptionDialog (null, "Choose an Item to equip", "Inventory!!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, equipmentList, equipmentList[0]);
+     // EquipmentTemplate equipment;
+      if(items==0){
+       EquipmentTemplate equipment1= new WeaponTemplate();
+        //equipment.equip(attackingCreature);
+        equiped.add(equipment1);
+        System.out.println(equiped.get(1).getName());
+      }
+//      else if(items==1){
+//        equipment= new RangedWeapon(equipment);
+//        equipment.equip(attackingCreature);
+//      }
+//      else if(items==2){
+//        equipment= new ShieldTemplate();
+//        equipment.equip(attackingCreature);
+//      }
+//      else if (items==3){
+//        equipment= new ArmorTemplate();
+//        equipment.equip(attackingCreature);
+//      }
+    }
+    else if(eq==1){
+      String[] equipmentList = {"Sword", "Bow", "Shield", "Armor"};
+      int items = JOptionPane.showOptionDialog (null, "Choose an Item to equip", "Inventory!!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, equipmentList, equipmentList[0]);
+     // EquipmentTemplate equipment;
+//      if(items==0){
+//        equipment= new WeaponTemplate();
+//        equipment.unequip(attackingCreature);
+//      }
+//      else if(items==1){
+//        equipment= new RangedWeapon(equipment);
+//        equipment.unequip(attackingCreature);
+//      }
+//      else if(items==1){
+//        equipment= new ShieldTemplate();
+//        equipment.unequip(attackingCreature);
+//      }
+//      else if (items==2){
+//        equipment= new ArmorTemplate();
+//        equipment.unequip(attackingCreature);
+//      }
+    }
+
+}
+  }//END ATTACK SCREEN
+  // DEFENSE SCREEN
+  public static void defenseScreen(CreatureTemplate attackingCreature, CreatureTemplate defendingCreature){
+    String[] opts = {"Defend", "Magic Defend", "Dodge", "flee"};
+    int actionA = JOptionPane.showOptionDialog (null, "Choose an Action", "THEIR TURN!!", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opts, opts[2]);
+
+    if (actionA==0){
+      int defensetemp=defendingCreature.getDefense();
+      defendingCreature.defend(defendingCreature);
+      defendingCreature.setHealth(defendingCreature.getHealth()-attackingCreature.attack(attackingCreature, defendingCreature));
+      defendingCreature.setDefense(defensetemp);
+    }
+    else if (actionA==1){
+      int magicdefensetemp=defendingCreature.getMagicDefense();
+      defendingCreature.magicDefense(defendingCreature);
+      defendingCreature.setHealth(defendingCreature.getHealth()-((attackingCreature.attack(attackingCreature, defendingCreature))));
+      defendingCreature.setMagicDefense(magicdefensetemp);}
+    else if (actionA==2){
+      if(defendingCreature.dodge(defendingCreature)==false){
+        defendingCreature.setHealth(defendingCreature.getHealth()-((attackingCreature.attack(attackingCreature, defendingCreature))));
+        System.out.println("You tried to dodge. You were too slow! :o");}
+      else{      
+        System.out.println("You have dodged! How nimble you are!!");}
+    }
+    else if (actionA==3){
+      System.out.println("You have attempted to flee. There is no escape! :o");
+    }
+    
+  }//END DEFENSE SCREEN
+    
+
+}//END OF MAIN METHOD
+

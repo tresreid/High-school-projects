@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+public class Race {
+  
+  
+  public static void main(String[] args) { 
+    
+  ArrayList<Racecar> racecars = new ArrayList<Racecar>();
+ Racecar car;
+ car= new RabbitRacecar();
+   System.out.println(car.getName);
+   System.out.println(car.getSpeed);
+   System.out.println(car.getTraction);
+   
+   car= new TurtleRacecar();
+   System.out.println(car.getName);
+   System.out.println(car.getSpeed);
+   System.out.println(car.getTraction);
+  } 
+}

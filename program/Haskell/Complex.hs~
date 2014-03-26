@@ -1,0 +1,9 @@
+
+data Complex = Complex Double Double 
+    deriving (Show,Eq) 
+
+instance Num Complex where 
+    Complex a b + Complex c d = Complex (a+c) (b+d)
+    Complex a b * Complex c d = Complex (a*c-b*d) (a*d+b*c)
+    
+    

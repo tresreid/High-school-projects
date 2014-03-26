@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="random.cbp" />
+		<Project filename="..\recurse\recurse.cbp" />
+		<Project filename="..\Physics-force\Physics-force.cbp" />
+		<Project filename="..\even or odd\even or odd.cbp" />
+		<Project filename="..\array\array.cbp" />
+		<Project filename="..\strings\strings.cbp" active="1" />
+	</Workspace>
+</CodeBlocks_workspace_file>

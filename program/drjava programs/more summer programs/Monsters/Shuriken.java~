@@ -1,0 +1,13 @@
+/**
+ * Auto Generated Java Class.
+ */
+public class Shuriken extends ThrowableItem {
+  
+  public Shuriken() { 
+    super();
+    this.attack=30;
+    this.ammo=5;
+  }
+  /* ADD YOUR CODE HERE */
+  
+}

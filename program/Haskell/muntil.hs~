@@ -1,0 +1,7 @@
+
+
+hMaybeGetChar :: Handle -> IO (Maybe Char)
+nMaybeGetChar c 
+    c == (hIsEOF input) >>= \terminate -> if terminate
+        then return Nothing
+        else return Just c

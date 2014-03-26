@@ -1,0 +1,7 @@
+public class CallApp
+ {   public static void main(String args[])
+     { 
+     App a = new App(); 
+     }
+  
+ }  

@@ -1,0 +1,63 @@
+-- A point is a point in the xy plane, represented by x and y coordinates
+-- E.g. (Point 0.0 0.0) is the origin, (Point (-1) (1)) is in the top left
+-- quadrant.
+data Point = Point Double Double
+    deriving (Show, Eq)
+
+-- A line segment is a straight line of finite length, defined by its
+-- two end points.   E.g. (LineSegment (Point 0 0) (Point 1 1)) is a
+-- line segment from the origin to the coordinate (1, 1)
+data LineSegment = LineSegment Point Point 
+    deriving (Show, Eq)
+
+
+-- A Path is a 2D path in the xy-plane.  The idea is that Path can be 
+-- extended to support straight lines, curves, and arbitrary paths, 
+-- but currently there is only one data constructor for Path: Line.
+data Path = 
+-- Line represents an infinite straight line defined by its slope a
+-- and its y intercept b, ie. by the equation y = ax + b
+    Line Double Double
+    deriving (Show, Eq)
+slope x1 x2 y1 y2 = ((y2-y1)/(x2-x1))
+yInt x1 x2 y1 y2 = y1 - (slope x1 x2 y1 y2)*x1
+intersect (Line m b) (LineSegment(Point x1 y1) (Point x2 y2))
+    | (((m == slope x1 x2 y1 y2 )) && (b == yInt x1 x2 y1 y2))= True
+    | (((m == slope x1 x2 y1 y2 )) && (b /= yInt x1 x2 y1 y2))= False
+    | (x1<x2)&& ((((yInt x1 x2 y1 y2 - b) / (m -  slope x1 x2 y1 y2)) > x1) &&  (((yInt x1 x2 y1 y2 - b) / (m -  slope x1 x2 y1 y2)) < x2)) = True
+    | (x2<x1)&& ((((yInt x1 x2 y1 y2 - b) / (m -  slope x1 x2 y1 y2)) > x2) &&  (((yInt x1 x2 y1 y2 - b) / (m -  slope x1 x2 y1 y2)) < x1)) = True
+    | (x1==x2) && (y1<y2) && ((m * x1)+b > y1) && ((m * x1)+b < y2) = True
+    | (x1==x2) && (y2<y1) && ((m * x1)+b > y2) && ((m * x1)+b < y1) = True
+    | otherwise = False
+
+data Triangle = Triangle Point Point Point
+    deriving (Show, Eq)
+
+data Quad = Quad Point Point Point Point
+    deriving (Show, Eq)
+
+data Circle = Circle Point Double
+    deriving (Show, Eq)
+
+data BoundingBox = BoundingBox Point Point
+    deriving (Show, Eq)
+
+
+tminx (Triangle (Point a b) (Point c d) (Point e f))
+    | a<= c && a <=e = a
+    | c<=a && c <= e = c
+    | e<=a && e <=c = e
+tmaxx (Triangle (Point a b) (Point c d) (Point e f))
+    | a>= c && a>=e = a
+    | c>=a && c >= e = c
+    | e>=a && e >=c = e
+tminy (Triangle (Point a b) (Point c d) (Point e f))
+    | b<= d && b <=f = b
+    | d<=b && d <= f = d
+    | f<=b && f <=d = f
+tmaxy (Triangle (Point a b) (Point c d) (Point e f))
+    | b>= d && b>=f = b
+    | d>=b && d >= f = d
+    | f>=b && f >=d = f
+
+boundShapeTri (Triangle (Point a b) (Point c d) (Point e f)) = BoundingBox( (Point (tmaxx(Triangle (Point a b) (Point c d) (Point e f))) (tmaxy(Triangle (Point a b) (Point c d) (Point e f))) ) (Point (tminx(Triangle (Point a b) (Point c d) (Point e f))) (tminy(Triangle (Point a b) (Point c d) (Point e f)))))

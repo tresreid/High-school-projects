@@ -1,0 +1,38 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.*;
+import java.io.*;
+import javax.imageio.*;
+import javax.swing.*;
+
+  public class Portal{
+    private int xPos,yPos;
+    private int releasex,releasey;
+    BufferedImage img;
+    public Portal(int xPos, int yPos, int releasex, int releasey){
+    super();
+    this.xPos = xPos;
+    this.yPos = yPos;
+    this.releasex= releasex;
+    this.releasey= releasey;
+           try {
+           img = ImageIO.read(new File("portal.png"));
+       } catch (IOException e) {
+       }
+    }
+    
+    public int getXPos(){
+      return xPos;
+    }
+    public int getYPos(){
+     return yPos; 
+    }
+    public int getReleasex(){
+      return releasex;
+    }
+    public int getReleasey(){
+      return releasey;
+    }
+
+      
+  }

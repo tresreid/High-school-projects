@@ -1,0 +1,18 @@
+import Data.Foldable
+import Data.Monoid
+
+data Tree a = Leaf a | Node [Tree a]
+     deriving (Show) 
+
+t :: Tree Int 
+t = Node [Node [Leaf 1, Leaf 2], Node [Leaf 3, Leaf 4]]
+
+
+instance Foldable Tree where
+    --foldMap f (Node []) = [] 
+    foldMap f (Leaf x) = f x
+    foldMap f (Node (x:xs)) 
+        | (length (x:xs) == 1) = foldMap f x
+        | otherwise = ((foldMap f x) `mappend` (foldMap f (Node xs)))
+
+findList x = Data.Foldable.foldr (:) [] t

@@ -1,0 +1,12 @@
+/**
+ * Auto Generated Java Class.
+ */
+public class FlyingCreatureTemplate extends CreatureTemplate {
+  
+  public FlyingCreatureTemplate() { 
+    super();
+    int flightheight;
+  }
+  /* ADD YOUR CODE HERE */
+  
+}

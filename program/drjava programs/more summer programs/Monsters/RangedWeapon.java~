@@ -1,0 +1,18 @@
+/**
+ * Auto Generated Java Class.
+ */
+public class RangedWeapon extends EquipmentTemplate {
+  
+  public RangedWeapon() { 
+    super();
+    this.attack=10;
+    this.range=10;
+    this.name="Bow";
+  }
+  int ammo=50;
+  int damage;
+  public int shoot(){
+   ammo--; 
+  }
+  
+}

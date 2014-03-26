@@ -1,0 +1,7 @@
+
+
+data Expression = DoubleValue Double 
+                  | Sum Expression Expression 
+                  | Difference Expression Expression 
+                  | Product Expression Expression 
+                  | Quotient Expression Expression

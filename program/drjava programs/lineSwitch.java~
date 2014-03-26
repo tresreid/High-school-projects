@@ -1,0 +1,13 @@
+public class lineSwitch {
+  public static void main(String[] arg){
+String output="";
+Sting input;
+Scanner scan = new Scanner(System.in);
+input=scan.nextLine();
+
+for(int i=input.length();i>0; i--)
+  output+=input.charAt(i);
+  }
+  System.out.println("the original is "+input); 
+  System.out.println("the new line is "+output);
+}

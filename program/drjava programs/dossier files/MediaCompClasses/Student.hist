@@ -1,0 +1,117 @@
+// DrJava saved history v2
+java Student//End of Interaction//
+Student s1 = new Student();//End of Interaction//
+System.out.println(s1);//End of Interaction//
+Student s2 = new Student();//End of Interaction//
+System.out.println(s2);//End of Interaction//
+Class studentClass = s1.getClass();//End of Interaction//
+System.out.println(studentClass);//End of Interaction//
+Class parentClass = studentClass.getSuperclass();//End of Interaction//
+System.out.println(parentClass);//End of Interaction//
+System.out.println(s1);//End of Interaction//
+Student s1 = new Student();//End of Interaction//
+System.out.println(s1);//End of Interaction//
+Student s1 = new Student("Jane");//End of Interaction//
+System.out.println(s1);//End of Interaction//
+System.out.println("text");//End of Interaction//
+Lp.sopl("test");//End of Interaction//
+Lp.sopl("test");//End of Interaction//
+Student s1 = new Student("jane");//End of Interaction//
+Lp.sopl(s1);//End of Interaction//
+this.name//End of Interaction//
+theName//End of Interaction//
+theName//End of Interaction//
+this.name//End of Interaction//
+this.name//End of Interaction//
+double[] ga1 = { 80, 90, 75, 90, 95 };//End of Interaction//
+Student s1 = new Student("Jane", ga1);//End of Interaction//
+Lp.sopl(s1);//End of Interaction//
+Student s1 = new Student("Jane", {50, 70, 90, 85, 92});//End of Interaction//
+Student s1 = new Student("Jane", (double[]) {50, 70, 90, 85, 92});//End of Interaction//
+double[] g1 = {50, 70, 90, 85, 92};//End of Interaction//
+Student s1 = new Student("Jane", g1);//End of Interaction//
+Lp.sopl(s1);//End of Interaction//
+double[] g1 = {50, 70, 90, 85, 92};//End of Interaction//
+Student s1 = new Student("Jane", g1);//End of Interaction//
+s1.getAverage()//End of Interaction//
+s1.toString();//End of Interaction//
+System.out.println(s1);//End of Interaction//
+s1.toString()//End of Interaction//
+Student s2 = new Student("Joe");//End of Interaction//
+Student s3 = new Student("Wendy")//End of Interaction//
+System.out.println(s2);//End of Interaction//
+s2.getAverage()//End of Interaction//
+s2.getAverage()//End of Interaction//
+Student s2 = new Student("Joe");//End of Interaction//
+s2.getAverage()//End of Interaction//
+System.out.println(s2);//End of Interaction//
+Student s2 = new Student("Joe");//End of Interaction//
+System.out.println(s2);//End of Interaction//
+s2.getAverage()//End of Interaction//
+double[] g1 = {50, 70, 90, 85, 92};//End of Interaction//
+Student s2 = new Student("Joe", g1);//End of Interaction//
+g1//End of Interaction//
+g1.toString()//End of Interaction//
+s2.toString()//End of Interaction//
+g1[0] = 80;//End of Interaction//
+s2.toString()//End of Interaction//
+double[] g1 = {50, 70, 90, 85, 92};//End of Interaction//
+Student s2 = new Student("Joe", g1);//End of Interaction//
+Lp.pda(g1);//End of Interaction//
+s1.toString();//End of Interaction//
+s2.toString()//End of Interaction//
+g1[0] = 91;//End of Interaction//
+Lp.pda(g1);//End of Interaction//
+s2.toString()//End of Interaction//
+double[] g1 = {50, 70, 90, 85, 92};//End of Interaction//
+Student s2 = new Student("Joe", g1);//End of Interaction//
+Lp.pda(g1);//End of Interaction//
+s2.toString()//End of Interaction//
+g1[0] = 91;//End of Interaction//
+Lp.pda(g1);//End of Interaction//
+s2.toString()//End of Interaction//
+Lp.pda(g1);//End of Interaction//
+s2.toString()//End of Interaction//
+g1[0] = 70;//End of Interaction//
+Lp.pda(g1);//End of Interaction//
+s2.toString()//End of Interaction//
+double[] g1 = {50, 70, 90, 85, 92};//End of Interaction//
+Student s2 = new Student("Joe", g1);//End of Interaction//
+Lp.pda(g1);//End of Interaction//
+s2.toString()//End of Interaction//
+g1[0] = 93;//End of Interaction//
+Lp.pda(g1);//End of Interaction//
+s2.toString()//End of Interaction//
+String n1 = "James";//End of Interaction//
+Student s2 = new Student(n1, g1);//End of Interaction//
+s2 = new Student(n1, g1);//End of Interaction//
+s2.toString()//End of Interaction//
+n1 = "Joey";//End of Interaction//
+s2.toString()//End of Interaction//
+s2.name//End of Interaction//
+s2.gradeArray//End of Interaction//
+s2.notthere//End of Interaction//
+double[] g1 = {50, 70, 90, 85, 92};//End of Interaction//
+s1 = new Student("Gail", g1);//End of Interaction//
+s1.getName()//End of Interaction//
+s1.getGrades()//End of Interaction//
+double[] g2 = s1.getGrades();//End of Interaction//
+Lp.pda(g2)//End of Interaction//
+s1//End of Interaction//
+g2[3] = 55;//End of Interaction//
+Lp.pda(g2)//End of Interaction//
+s1//End of Interaction//
+double[] g1 = {50, 70, 90, 85, 92};//End of Interaction//
+s1 = new Student("Gail", g1);//End of Interaction//
+s1//End of Interaction//
+g2 = s1.getGrades();//End of Interaction//
+g2//End of Interaction//
+Lp.pda(g2)//End of Interaction//
+g2[2] = 15//End of Interaction//
+Lp.pda(g2)//End of Interaction//
+g2[2] = 15;//End of Interaction//
+s1//End of Interaction//
+double[] g1 = {50, 70, 90, 85, 92};//End of Interaction//
+s1 = new Student("Gail", g1);//End of Interaction//
+s1//End of Interaction//
+Lp.pda(s1.getGrades())//End of Interaction//

@@ -1,0 +1,26 @@
+public class SlideShow
+{
+  /////////////// fields ///////////////
+  private int waitTime = 2000; // wait 2 seconds
+  private Picture[] pictureArray;
+
+  //////////// constructors ///////////
+  public SlideShow() {}
+  
+  public SlideShow(int theTime)
+  {
+    this.waitTime = theTime;
+  }
+  
+  public SlideShow(Picture[] theArray)
+  {
+    this.pictureArray = theArray;
+  }
+
+  /////////// methods ///////////////
+  public String toString()
+  {
+    return "SlideShow object with a wait time of: " + 
+            this.waitTime;
+  }
+}

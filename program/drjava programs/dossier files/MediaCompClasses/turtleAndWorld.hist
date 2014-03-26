@@ -1,0 +1,4 @@
+// DrJava saved history v2
+World earth1 = new World();//End of Interaction//
+Turtle tommy = new Turtle(earth1)//End of Interaction//
+tommy.drawSquare();

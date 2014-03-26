@@ -1,0 +1,28 @@
+public class ConfusedTurtle extends Turtle
+{
+  public ConfusedTurtle(World worldObj)
+  {
+    super(worldObj);
+  }
+  
+  public void turnLeft()
+  {
+    super.turnRight();
+  }
+  
+  public void turnRight()
+  {
+    super.turnLeft();
+  }
+  public static void main(String[] args)
+  {
+    World earth = new World();
+    Turtle t1 = new Turtle(earth);
+    ConfusedTurtle t2 = new ConfusedTurtle(earth);
+    t1.forward();
+    t1.turnRight();
+    t2.turnRight();
+    t1.forward();
+    t2.forward();
+  }
+}

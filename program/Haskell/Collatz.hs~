@@ -1,0 +1,4 @@
+
+collatz x 
+    | even x = x/2
+    | odd x = 3*x+1

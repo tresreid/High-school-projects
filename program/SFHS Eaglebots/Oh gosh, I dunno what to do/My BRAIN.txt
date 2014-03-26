@@ -1,0 +1,24 @@
+CHANNEL1 Settings:
+Speed Controller
+GAIN 1.00
+Positive Limit Switch: None
+Negative Limit Switch: None
+
+CHANNEL2 Settings:
+Speed Controller
+GAIN 1.00
+Positive Limit Switch: None
+Negative Limit Switch: None
+
+CHANNEL3 Settings:
+Speed Controller
+GAIN 1.00
+Positive Limit Switch: None
+Negative Limit Switch: None
+
+CHANNEL4 Settings:
+Speed Controller
+GAIN 1.00
+Positive Limit Switch: None
+Negative Limit Switch: None
+

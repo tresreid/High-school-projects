@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Rock
+{
+public static void main(String[] args)
+{
+String personPlay; //User's play -- "R", "P", or "S"
+String computerPlay; //Computer's play -- "R", "P", or "S"
+int computerInt; //Randomly generated number used to determine
+//computer's play
+Scanner scan = new Scanner(System.in);
+Random generator = new Random();
+//Get player's play -- note that this is stored as a string
+// code goes below here
+System.out.println("Please input your play (R,P,S,L,SP)");
+personPlay=scan.next();                  
+//Make player's play uppercase for ease of comparison
+// code goes below here
+personPlay.toUpperCase();
+//Generate computer's play (0,1,2)
+// code goes below here
+computerInt=gen.nextInt(5);
+//Translate computer's randomly generated play to string
+// complete the switch statement below
+if (personplay.equals("R")
+      {if (computer
+if (personplay.equals("P")
+if (personplay.equals("S")
+if (personplay.equals("L")
+if (personplay.equals("SP")
+switch (computerInt)
+{
+}

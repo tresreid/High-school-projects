@@ -1,0 +1,11 @@
+/**
+ * Auto Generated Java Class.
+ */
+public class ShieldTemplate extends EquipmentTemplate {
+  public ShieldTemplate(){
+  super();
+  this.defence=10;
+  this.name="shield";
+  
+}
+}

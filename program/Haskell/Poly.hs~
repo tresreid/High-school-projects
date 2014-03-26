@@ -1,0 +1,5 @@
+data Poly = Poly [Double]
+
+eval :: Poly -> Double -> Double
+eval [] _ = []
+eval (x:xs) x = x* eval xs x

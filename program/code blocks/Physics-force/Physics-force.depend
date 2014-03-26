@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1286905603 source:c:\documents and settings\tres\my documents\program\code blocks\physics-force\main.cpp
+	<iostream>
+	<cmath>
+

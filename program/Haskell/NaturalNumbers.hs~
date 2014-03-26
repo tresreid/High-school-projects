@@ -1,0 +1,60 @@
+-- NaturalNumbers.hs
+
+data NaturalNumber = Zero | S NaturalNumber
+    deriving (Show)
+
+zero = Zero
+one = S zero
+two = S one
+three = S two
+four = S three
+five = S four
+six = S five
+seven = S six
+eight = S seven
+nine = S eight
+ten = S nine
+infinity = S infinity
+
+instance Eq NaturalNumber where
+    Zero == Zero = True
+    Zero == S _ = False
+    S _ == Zero = False
+    S x == S y = x == y
+
+instance Ord NaturalNumber where
+    compare Zero Zero = EQ
+    compare Zero (S zero) = LT
+    compare(S zero) Zero = GT
+    compare (S x) (S y) = compare x y
+instance Num NaturalNumber where
+    x +Zero = x
+    x + S y = S (x+y)
+    x * Zero = Zero
+    x * S y = x + x*y
+    fromInteger n
+        | n > 0 = S (fromInteger (n-1))
+        | n == 0 = Zero
+    negate n
+        | n /= 0 = (-n)
+        | n == 0 = Zero
+    abs n
+        | n > 0 = n
+        | n == 0 = Zero
+        | n < 0 = -n
+    signum n
+        | n > 0 = -1
+        | n == 0 = Zero
+        | n < 0 = 1
+nat :: NaturalNumber -> NaturalNumber
+nat = id
+
+primrec ::(NaturalNumber -> NaturalNumber-> NaturalNumber) -> NaturalNumber -> NaturalNumber-> NaturalNumber 
+primrec f x Zero = x 
+primrec f Zero x = x
+primrec f x (S n) = f n (primrec f x n) 
+
+sum x y = S (x+y)
+pro x y = x + x*y
+
+

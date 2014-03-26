@@ -1,0 +1,107 @@
+module Proposition where
+
+import Control.Applicative
+import Control.Monad
+import Control.Monad.Identity
+import Data.Char
+import Data.Foldable
+import Data.List (nub)
+import Data.Map (Map,lookup)
+import qualified Data.Map as Map
+import Data.Monoid
+import Text.ParserCombinators.ReadP
+
+{- Prop a -}
+
+data Prop a
+    = Var a
+    | Boolean Bool
+    | Not (Prop a)
+    | And (Prop a) (Prop a)
+    | Or (Prop a) (Prop a)
+    | Implies (Prop a) (Prop a)
+    deriving (Eq, Show)
+
+primrec :: (a -> b)       -- ^ Var
+        -> (Bool -> b)    -- ^ Boolean
+        -> (b -> b)       -- ^ Not
+        -> (b -> b -> b)  -- ^ And
+        -> (b -> b -> b)  -- ^ Or
+        -> (b -> b -> b)  -- ^ Implies
+        -> Prop a
+        -> b
+primrec varf boolf notf andf orf impliesf = result where
+    result p = case p of
+        Var a -> varf a
+        Boolean b -> boolf b
+        Not p -> notf (result p)
+        And p q -> andf (result p) (result q)
+        Or p q -> orf (result p) (result q)
+        Implies p q -> impliesf (result p) (result q)
+
+instance Monad Prop where
+    return = Var
+    m >>= f = primrec f Boolean Not And Or Implies m
+
+instance Functor Prop where
+    fmap = liftM
+
+instance Applicative Prop where
+    pure = return
+    (<*>) = ap
+
+instance Foldable Prop where
+    foldMap f = primrec f (const mempty) id mappend mappend mappend
+    
+parseProp :: ReadP a
+          -> ReadP (Prop a)
+parseProp parseA = prec 0 where
+    prec 0 = chainr1 (prec 1) $ parseConst Implies $ wstring "->"
+    prec 1 = chainl1 (prec 2) $ parseConst Or $ wchar '|'
+    prec 2 = chainl1 (prec 3) $ parseConst And $ wchar '&'
+    prec 3 = prefix  (prec 4) $ parseConst Not $ wchar '!'
+    prec 4 = parseBool +++ parseVar +++ parseParens (prec 0)
+    parseVar = skipSpaces >> fmap Var parseA
+    parseBool = parseConst (Boolean True) (wchar 'T') +++
+                parseConst (Boolean False) (wchar 'F')
+    parseParens = between (wchar '(') (wchar ')')
+
+wchar :: ReadP Char
+wchar c = skipSpaces >> char c
+
+wstring :: ReadP String
+wstring s = skipSpaces >> string s
+
+parseConstant :: a -> ReadP b -> ReadP a
+parseConst value parser = fmap (const value) parser
+
+prefix :: ReadP a -> ReadP (a -> a) ->  ReadP a
+prefix p op = pp where
+    pp = p +++ liftM2 id op pp
+
+showProp :: (a -> String)
+         -> Prop a
+         -> String
+showProp vshow = prec 0 where
+    prec _ (Boolean True) = "T"
+    prec _ (Boolean False) = "F"
+    prec _ (Var v) = vshow v
+    prec _ (Not p) = "!" ++ prec 3 p
+    prec i (And s t)     = paren 2 i $ (prec 2 s) ++ " & " ++ (prec 2 t)
+    prec i (Or s t)      = paren 1 i $ (prec 1 s) ++ " | " ++ (prec 1 t)
+    prec i (Implies s t) = paren 0 i $ (prec 1 s) ++ " -> " ++ (prec 0 t)
+    paren cutoff prec str
+        | prec > cutoff = "(" ++ str ++ ")"
+        | otherwise     = str
+
+{- Propositions -}
+
+newtype Proposition = Proposition { getProp :: Prop String }
+    deriving (Eq)
+
+instance Read Proposition where
+    readsPrec _ = readP_to_S $ fmap Proposition $ parseProp parseVar where
+        parseVar = liftM2 (:) (satisfy isLower) (munch (liftM2 (||) isLower isDigit))
+
+instance Show Proposition where
+    show = showProp id . getProp

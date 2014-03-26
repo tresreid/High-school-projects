@@ -1,0 +1,15 @@
+  import java.awt.*;
+  public class wallv{
+    private int xPos,yPos;
+    
+    public wallv(int xPos, int yPos){
+    super();
+    this.xPos = xPos;
+    this.yPos = yPos;
+    }
+    
+    public void build(){
+      
+    }
+      
+  }

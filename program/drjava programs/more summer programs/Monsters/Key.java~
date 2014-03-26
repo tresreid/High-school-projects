@@ -1,0 +1,26 @@
+import java.awt.*;
+  public class Key{
+    private int xPos,yPos;
+    private boolean obtained;
+    
+    public Key(int xPos, int yPos){
+    super();
+    this.xPos = xPos;
+    this.yPos = yPos;
+    }
+    
+    public int getXPos(){
+      return xPos;
+    }
+    public int getYPos(){
+     return yPos; 
+    }
+    public boolean getObtained(){
+      return obtained;
+    }
+    public void setObtained(boolean obtained){
+      this.obtained=obtained;
+    }
+  }
+    
+      

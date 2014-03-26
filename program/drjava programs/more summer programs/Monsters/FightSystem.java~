@@ -1,0 +1,14 @@
+import java.util.ArrayList;
+public class Fight {
+  
+  
+  public static void main(String[] args) { 
+    
+  }
+  
+ArrayList<CreatureTemplate> creatures = new ArrayList<CreatureTemplate>();
+CreatureTemplate creature1;//= new CreatureTemplate
+CreatureTemplate creature2;//= new CreatureTemplate
+  
+
+}

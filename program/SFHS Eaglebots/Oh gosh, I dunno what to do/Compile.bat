@@ -1,0 +1,1 @@
+"C:\Program Files\IAR Systems\Embedded Workbench 5.0\common\bin\IARBuild.exe" "C:\BEST Brain\Programming Software\Brain\Brain Projects\Oh gosh, I dunno what to do\wizard.ewp" -build Debug -log info >"C:\BEST Brain\Programming Software\Brain\Brain Projects\temp.log"

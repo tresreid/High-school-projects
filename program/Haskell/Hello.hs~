@@ -1,0 +1,9 @@
+module Main where 
+import System.Environment
+msg :: String -> String
+msg cuser = "Hello, " ++ user ++ "!" 
+cuser = toUpper $ head user
+main :: IO () 
+main = do 
+    user <- getEnv "USER"
+    putStrLn $ msg cuser
